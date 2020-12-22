@@ -1,4 +1,4 @@
-var cacheName = 'hello-pwa';
+var cacheName = 'funstuff';
 var filesToCache = [
   '/',
   '/index.html',
@@ -22,6 +22,8 @@ self.addEventListener('fetch', function(e) {
   e.respondWith(
     caches.match(e.request).then(function(response) {
       console.log(response)
+      console.log(fetch(e.request))
+      console.log('toma')
       return response || fetch(e.request);
     })
   );
