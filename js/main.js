@@ -5,6 +5,7 @@ window.onload = () => {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js");
     navigator.serviceWorker.ready.then((registration) => {
+      
       registration.update().then(() => {console.log('updated')});
     });
   }
