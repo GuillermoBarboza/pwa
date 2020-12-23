@@ -3,8 +3,8 @@ window.onload = () => {
   console.log("inicios");
 
   if ("serviceWorker" in navigator) {
-    console.log(navigator)
-    console.log(navigator.serviceWorker)
+    console.log("navigator", navigator);
+    console.log(navigator.serviceWorker);
     navigator.serviceWorker.register("./sw.js");
    
   }
