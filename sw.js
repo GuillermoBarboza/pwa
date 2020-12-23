@@ -22,10 +22,13 @@ self.addEventListener('fetch', function(e) {
   e.respondWith(
     caches.match(e.request).then(function(response) {
       console.log(response)
-      fetch(e.request)
-      .then(res => res.json)
-      .then(res => console.log(res))
+      
       return response || fetch(e.request);
     })
   );
 });
+
+self.addEventListener('activate', (e)=>{
+  console.log(e);
+  console.log('activated ')
+})
