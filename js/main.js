@@ -5,7 +5,14 @@ window.onload = () => {
   if ("serviceWorker" in navigator) {
     console.log("navigator", navigator);
     console.log(navigator.serviceWorker);
-    navigator.serviceWorker.register("./sw.js");
+    navigator.serviceWorker.register("./sw.js")
+    .then(res=>{
+      console.log(res.scope)
+    })
+    .catch((error) => {
+      // registration failed
+      console.log('Registration failed with ' + error);
+    });
    
   }
 };

@@ -1,4 +1,4 @@
-var cacheName = 'funstuff';
+var cacheName = 'v1';
 var filesToCache = [
   '/',
   '/index.html',
@@ -28,7 +28,19 @@ self.addEventListener('fetch', function(e) {
   );
 });
 
-self.addEventListener('activate', (e)=>{
-  console.log(e);
-  console.log('activated ')
-})
+self.addEventListener('activate', (event) => {
+  var cacheKeeplist = ['v1'];
+
+  event.waitUntil(
+    caches.keys().then((keyList) => {
+      return Promise.all(keyList.map((key) => {
+        console.log(cacheKeeplist.indexOf(key));
+        console.log(key);
+        
+        if (cacheKeeplist.indexOf(key) === -1) {
+          return caches.delete(key);
+        }
+      }));
+    })
+  );
+});
