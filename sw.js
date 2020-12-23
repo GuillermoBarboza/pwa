@@ -1,4 +1,4 @@
-var cacheName = 'funstuffv1.0.1';
+var cacheName = 'funstuffv1.0.2';
 var filesToCache = [
   '/',
   '/index.html',
@@ -29,7 +29,7 @@ self.addEventListener('fetch', function(e) {
 });
 
 self.addEventListener('activate', (event) => {
-  var cacheKeeplist = ['funstuffv1.0.1'];
+  var cacheKeeplist = cacheName;
 
   event.waitUntil(
     caches.keys().then((keyList) => {
