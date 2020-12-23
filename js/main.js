@@ -17,7 +17,7 @@ window.onload = () => {
   }
 };
 
-let deferredPrompt;
+/* let deferredPrompt;
 const installBtn = document.querySelector(".install");
 installBtn.style.display = "none";
 
@@ -42,7 +42,7 @@ window.addEventListener("beforeinstallprompt", (e) => {
       deferredPrompt = null;
     });
   });
-});
+}); */
 
 document.getElementById("button").addEventListener("click", () => {
   fetch("https://jsonplaceholder.typicode.com/todos/1")
