@@ -18,28 +18,29 @@ window.onload = () => {
 };
 
 let deferredPrompt;
+const installBtn = document.querySelector(".install");
+installBtn.style.display = "none";
+
 window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
   console.log(e);
 
-  let install = document.createElement("button");
-  install.innerHTML = "Install!";
-  install.id = 'install-btn';
-  document.getElementById("container").appendChild(install);
-});
+  e.preventDefault();
 
-document.getElementById('install-btn').addEventListener('click', (e) => {
-  // Hide the app provided install promotion
- 
-  // Show the install prompt
-  deferredPrompt.prompt();
-  // Wait for the user to respond to the prompt
-  deferredPrompt.userChoice.then((choiceResult) => {
-    if (choiceResult.outcome === 'accepted') {
-      console.log('User accepted the install prompt');
-    } else {
-      console.log('User dismissed the install prompt');
-    }
+  deferredPrompt = e;
+
+  installBtn.style.display = "block";
+
+  installBtn.addEventListener("click", (e) => {
+    installBtn.style.display = "none";
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === "accepted") {
+        console.log("User accepted the A2HS prompt");
+      } else {
+        console.log("User dismissed the A2HS prompt");
+      }
+      deferredPrompt = null;
+    });
   });
 });
 
