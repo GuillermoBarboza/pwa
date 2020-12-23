@@ -10,7 +10,7 @@ var filesToCache = [
 self.addEventListener('install', function(e) {
   e.waitUntil(
     caches.open(cacheName).then(function(cache) {
-      console.log(cache)
+      console.log(cache, 'on install')
       return cache.addAll(filesToCache);
     })
   );
@@ -18,12 +18,9 @@ self.addEventListener('install', function(e) {
 
 /* Serve cached content when offline */
 self.addEventListener('fetch', function(e) {
-  console.log('on')
+  console.log('on fetch')
   e.respondWith(
     caches.match(e.request).then(function(response) {
-      console.log(response)
-      console.log(fetch(e.request))
-      console.log('toma')
       return response || fetch(e.request);
     })
   );

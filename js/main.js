@@ -3,11 +3,10 @@ window.onload = () => {
   console.log("inicios");
 
   if ("serviceWorker" in navigator) {
+    console.log(navigator)
+    console.log(navigator.serviceWorker)
     navigator.serviceWorker.register("./sw.js");
-    navigator.serviceWorker.ready.then((registration) => {
-      
-      registration.update().then(() => {console.log('updated')});
-    });
+   
   }
 };
 
