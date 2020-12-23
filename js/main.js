@@ -17,16 +17,24 @@ window.onload = () => {
   }
 };
 
+let deferredPrompt;
 window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
   console.log(e);
-  
+
   let install = document.createElement("button");
   install.innerHTML = "Install!";
+  install.id = 'install-btn';
   document.getElementById("container").appendChild(install);
+});
 
-  e.prompt()
-  e.userChoice.then((choiceResult) => {
+document.getElementById('install-btn').addEventListener('click', (e) => {
+  // Hide the app provided install promotion
+ 
+  // Show the install prompt
+  deferredPrompt.prompt();
+  // Wait for the user to respond to the prompt
+  deferredPrompt.userChoice.then((choiceResult) => {
     if (choiceResult.outcome === 'accepted') {
       console.log('User accepted the install prompt');
     } else {
