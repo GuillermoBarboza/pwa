@@ -15,6 +15,25 @@ window.onload = () => {
       });
       
   }
+
+  //NOTIFICATIONS
+  let notification = document.querySelector('.notification');
+  notification.onclick = askAndshowNotification()
+  function askAndshowNotification() {
+  notification.innerHTML = "try and spamm xD"
+  //thanks mdn
+    Notification.requestPermission(function(result) {
+      if (result === 'granted') {
+        navigator.serviceWorker.ready.then(function(registration) {
+          registration.showNotification('Vibration Sample', {
+            body: 'Wild notification appears!',
+            vibrate: [100, 100],
+            tag: 'vibration-sample'
+          });
+        });
+      }
+    });
+  }
 };
 
 /* let deferredPrompt;

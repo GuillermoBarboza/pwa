@@ -18,6 +18,7 @@
   <body class="fullscreen">
     <div id="container" class="container">
       <button class="install">Install on device!</button>
+      <button class="notification">Activate Notifications too!</button>
       <h1 class="title">Fun Stuff!</h1>
       <p id="log">My app</p>
       <button id="button">Activate Powers</button>
@@ -34,13 +35,6 @@
 
       const installBtn = document.querySelector(".install");
       installBtn.addEventListener("click", (e) => {
-        navigator.serviceWorker.ready.then(function (registration) {
-          registration.showNotification("You clicked", {
-            body: "Buzz! Buzz! Mothercoder",
-            vibrate: [100, 100],
-            tag: "vibration-sample",
-          });
-        });
         document.getElementById("button").innerHTML = "this should change";
         installBtn.style.display = "none";
         document.getElementById("log").innerHTML = deferredPrompt;
