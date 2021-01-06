@@ -1,4 +1,4 @@
-var cacheName = 'funstuffv1.1.3';
+var cacheName = 'funstuffv1.1.4';
 var filesToCache = [
   '/',
   '/index.html',

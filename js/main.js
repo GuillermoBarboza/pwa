@@ -25,10 +25,9 @@ window.onload = () => {
     Notification.requestPermission(function(result) {
       if (result === 'granted') {
         navigator.serviceWorker.ready.then(function(registration) {
-          registration.showNotification('Vibration Sample', {
+          registration.showNotification('Electrohack says hi!', {
             body: 'Wild notification appears!',
-            vibrate: [100, 100],
-            tag: 'vibration-sample'
+            vibrate: [100, 100]
           });
         });
       }
