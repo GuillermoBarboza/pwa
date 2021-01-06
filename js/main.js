@@ -18,7 +18,7 @@ window.onload = () => {
 
   //NOTIFICATIONS
   let notification = document.querySelector('.notification');
-  notification.onclick = askAndshowNotification()
+  notification.addEventListener('click', askAndshowNotification)
   function askAndshowNotification() {
   notification.innerHTML = "try and spamm xD"
   //thanks mdn
