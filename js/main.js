@@ -3,8 +3,7 @@ window.onload = () => {
   console.log("inicios");
 
   if ("serviceWorker" in navigator) {
-    console.log("navigator", navigator);
-    console.log(navigator.serviceWorker);
+    
     navigator.serviceWorker
       .register("./sw.js")
       .then((res) => {
@@ -14,6 +13,7 @@ window.onload = () => {
         // registration failed
         console.log("Registration failed with " + error);
       });
+      
   }
 };
 

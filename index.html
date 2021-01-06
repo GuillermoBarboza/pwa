@@ -27,26 +27,29 @@
       let deferredPrompt;
 
       window.addEventListener("beforeinstallprompt", function (e) {
-        // Prevent Chrome 67 and earlier from automatically showing the prompt
         e.preventDefault();
-        // Stash the event so it can be triggered later.
+
         deferredPrompt = e;
       });
 
-      // Installation must be done by a user gesture! Here, the button click
       const installBtn = document.querySelector(".install");
       installBtn.addEventListener("click", (e) => {
-        document.getElementById('button').innerHTML = 'this should change';
+        navigator.serviceWorker.ready.then(function (registration) {
+          registration.showNotification("You clicked", {
+            body: "Buzz! Buzz! Mothercoder",
+            vibrate: [100, 100],
+            tag: "vibration-sample",
+          });
+        });
+        document.getElementById("button").innerHTML = "this should change";
         installBtn.style.display = "none";
-        // Show the prompt
-        document.getElementById('log').innerHTML = deferredPrompt;
+        document.getElementById("log").innerHTML = deferredPrompt;
         deferredPrompt.prompt();
-        // Wait for the user to respond to the prompt
         deferredPrompt.userChoice.then((choiceResult) => {
           if (choiceResult.outcome === "accepted") {
-            document.getElementById('button').innerHTML = 'accepted';
+            document.getElementById("button").innerHTML = "accepted";
           } else {
-            document.getElementById('button').innerHTML = 'what';
+            document.getElementById("button").innerHTML = "what";
           }
           deferredPrompt = null;
         });
