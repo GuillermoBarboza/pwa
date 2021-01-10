@@ -17,14 +17,13 @@
   </head>
   <body class="fullscreen">
     <div id="container" class="container">
-      <button class="install">Install on device!</button>
-      <button class="notification">Activate Notifications too!</button>
-      <h1 class="title">Fun Stuff!</h1>
-      <p id="log">My app</p>
-      <button id="button">Activate Powers</button>
+      <h1 class="title">Fun Stuff about your navigator!</h1>
+      <ul>
+        <li><p id="ambientLights">Lights:</p></li>
+      </ul>
     </div>
     <script src="js/main.js"></script>
-    <script>
+    <!-- <script>
       let deferredPrompt;
 
       window.addEventListener("beforeinstallprompt", e => {
@@ -48,6 +47,6 @@
           deferredPrompt = null;
         });
       });
-    </script>
+    </script> -->
   </body>
 </html>

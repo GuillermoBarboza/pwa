@@ -1,6 +1,5 @@
 window.onload = () => {
   "use strict";
-  console.log("inicios");
 
   if ("serviceWorker" in navigator) {
     
@@ -16,8 +15,25 @@ window.onload = () => {
       
   }
 
+  
+  if ('ondevicelight' in window) {
+    let ambientLights = document.querySelector("#ambientLights");
+
+    window.addEventListener('devicelight', function(event) {
+      console.log('ambientLights', event);
+      let lux = document.createElement('p');
+      lux.innerHTML = event.value;
+      ambientLights.appendChild(lux)
+      
+
+    });
+  } else {
+    console.log('devicelight event not supported');
+  }
+}
+
   //NOTIFICATIONS
-  let notification = document.querySelector('.notification');
+ /*  let notification = document.querySelector('.notification');
   notification.addEventListener('click', askAndshowNotification)
   function askAndshowNotification() {
   notification.innerHTML = "try and spamm xD"
@@ -33,7 +49,7 @@ window.onload = () => {
       }
     });
   }
-};
+}; */
 
 /* let deferredPrompt;
 const installBtn = document.querySelector(".install");
@@ -62,13 +78,3 @@ window.addEventListener("beforeinstallprompt", (e) => {
   });
 }); */
 
-document.getElementById("button").addEventListener("click", () => {
-  fetch("https://jsonplaceholder.typicode.com/todos/1")
-    .then((response) => response.json())
-    .then((json) => {
-      let powers = document.createElement("p");
-      powers.innerHTML = "Powers Activated!";
-      document.getElementById("container").appendChild(powers);
-      console.log(json);
-    });
-});
