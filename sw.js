@@ -1,4 +1,4 @@
-var cacheName = 'funstuffv1.1.5';
+var cacheName = 'funstuffv1.1.6';
 var filesToCache = [
   '/',
   '/index.html',
@@ -20,7 +20,6 @@ self.addEventListener('install', function(e) {
 self.addEventListener('fetch', function(e) {
   e.respondWith(
     caches.match(e.request).then(function(response) {
-      console.log(response)
       
       return response || fetch(e.request);
     })
@@ -33,8 +32,6 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keyList) => {
       return Promise.all(keyList.map((key) => {
-        console.log(cacheKeeplist.indexOf(key));
-        console.log(key);
         
         if (cacheKeeplist.indexOf(key) === -1) {
           console.log('deletao', key)

@@ -2,7 +2,6 @@ window.onload = () => {
   "use strict";
 
   if ("serviceWorker" in navigator) {
-    
     navigator.serviceWorker
       .register("./sw.js")
       .then((res) => {
@@ -12,28 +11,36 @@ window.onload = () => {
         // registration failed
         console.log("Registration failed with " + error);
       });
-      
   }
+  // Ambient Light Events
+  let ambientLights = document.querySelector("#ambientLights");
+  let lux = document.createElement("p");
+  if ("ondevicelight" in window) {
+    window.addEventListener("devicelight", function (event) {
+      console.log("ambientLights", event);
 
-  
-  if ('ondevicelight' in window) {
-    let ambientLights = document.querySelector("#ambientLights");
-
-    window.addEventListener('devicelight', function(event) {
-      console.log('ambientLights', event);
-      let lux = document.createElement('p');
       lux.innerHTML = event.value;
-      ambientLights.appendChild(lux)
-      
-
+      ambientLights.appendChild(lux);
     });
   } else {
-    console.log('devicelight event not supported');
+    let message = document.createElement("p");
+    message.innerHTML = "not supported";
   }
-}
 
-  //NOTIFICATIONS
- /*  let notification = document.querySelector('.notification');
+  let gyroscope = new Gyroscope({ frequency: 60 });
+  let htmlGyroscope = document.querySelector('#gyroscope')
+  
+  gyroscope.addEventListener("reading", (e) => {
+    
+    
+    htmlGyroscope.innerHTML = `Gyroscope readings... x: ${gyroscope.x} y:${gyroscope.y} z: ${gyroscope.z}`
+  });
+  gyroscope.start();
+  console.log(gyroscope);
+};
+
+//NOTIFICATIONS
+/*  let notification = document.querySelector('.notification');
   notification.addEventListener('click', askAndshowNotification)
   function askAndshowNotification() {
   notification.innerHTML = "try and spamm xD"
@@ -77,4 +84,3 @@ window.addEventListener("beforeinstallprompt", (e) => {
     });
   });
 }); */
-
