@@ -44,6 +44,19 @@ window.onload = () => {
   gyroscope.start();
   console.log(gyroscope);
 };
+//CAMERA
+let constraints = { audio: true, video: { width: 1280, height: 720 } };
+
+navigator.mediaDevices.getUserMedia(constraints)
+.then(function(mediaStream) {
+  let video = document.querySelector('video');
+  video.srcObject = mediaStream;
+  video.onloadedmetadata = function(e) {
+    video.play();
+  };
+})
+
+
 
 //NOTIFICATIONS
 /*  let notification = document.querySelector('.notification');
