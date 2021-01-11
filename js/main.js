@@ -25,15 +25,16 @@ window.onload = () => {
   } else {
     let message = document.createElement("p");
     message.innerHTML = "not supported";
+    ambientLights.appendChild(message)
   }
 
-  let gyroscope = new Gyroscope({ frequency: 60 });
+  let gyroscope = new Gyroscope({ frequency: 1000 });
   let htmlGyroscope = document.querySelector('#gyroscope')
   
   gyroscope.addEventListener("reading", (e) => {
     
     
-    htmlGyroscope.innerHTML = `Gyroscope readings... x: ${gyroscope.x} y:${gyroscope.y} z: ${gyroscope.z}`
+    htmlGyroscope.innerHTML = `Gyroscope readings... x: ${gyroscope.x.toString().slice(0, 3)} y:${gyroscope.y} z: ${gyroscope.z}`
   });
   gyroscope.start();
   console.log(gyroscope);

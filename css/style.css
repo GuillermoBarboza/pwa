@@ -21,3 +21,6 @@ html,
 .title {
   font-size: 3rem;
 }
+li {
+  list-style: none;
+}
