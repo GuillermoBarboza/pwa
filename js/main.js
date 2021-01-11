@@ -28,13 +28,13 @@ window.onload = () => {
     ambientLights.appendChild(message)
   }
 
-  let gyroscope = new Gyroscope({ frequency: 1000 });
+  let gyroscope = new Gyroscope({ frequency: 1500 });
   let htmlGyroscope = document.querySelector('#gyroscope')
   
   gyroscope.addEventListener("reading", (e) => {
     
     
-    htmlGyroscope.innerHTML = `Gyroscope readings... x: ${gyroscope.x.toString().slice(0, 3)} y:${gyroscope.y} z: ${gyroscope.z}`
+    htmlGyroscope.innerHTML = `Gyroscope readings... x: ${gyroscope.x.toString().slice(0, 3)} y:${gyroscope.y.toString().slice(0, 3)} z: ${gyroscope.z.toString().slice(0, 3)}`
   });
   gyroscope.start();
   console.log(gyroscope);
