@@ -1,5 +1,5 @@
 # Hello PWA
-The classic Hello World program as a Progressive Web App
+The classic Hello World program as a Progressive Web App // THANKS FOR THE EXAMPLE!
 
 ![Hello World Screenshot](./screenshot.jpg "Hello World Screenshot")
 
